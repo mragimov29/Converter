@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Converter</title>
-        <link rel="stylesheet" href="./style.css">
-        <script src="script.js" defer=""></script>
-    </head>
+
+<head>
+    <title>Converter</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer=""></script>
+</head>
+
+<body>
     <header>
-        <img src="./images/logo.svg" alt="logo">
+        <img src="./images/logo.svg" alt="logo" class="logo">
         <div class="list">
             <p>БАНК</p>
             <p>БИЗНЕС</p>
@@ -16,43 +19,51 @@
             <p>ПУТЕШЕСТВИЯ</p>
             <p>РАЗВЛЕЧЕНИЯ</p>
         </div>
-        <div class="sing-in">ВОЙТИ</div>
+        <button class="sing-in">
+            <span>ВОЙТИ</span>
+        </button>
     </header>
-    <body>
+    <main>
         <h1>Конвертер валют онлайн</h1>
-        <div class="first">
-            <p>У меня есть</p>
-            <div class="currensies">
-                <table>
-                    <tr>
-                        <th>AZN</th>
-                        <th>USD</th>
-                        <th>EUR</th>
-                        <th>GBP</th>
-                    </tr>
-                </table>
-                <div class="converter">
-                    <input>
-                    <p class="exchange-rates"></p>
+        <div class="blocks">
+            <div class="first">
+                <p>У меня есть</p>
+                <div class="currensies">
+                    <table>
+                        <tr>
+                            <th id="selected"><button id="selected">AZN</button></th>
+                            <th><button>USD</button></th>
+                            <th><button>EUR</button></th>
+                            <th><button>GPD</button></th>
+                        </tr>
+                    </table>
+                    <div class="converter">
+                        <input placeholder="Введите сумму">
+                        <p class="exchange-rates"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="second">
+                <p>У меня есть</p>
+                <div class="currensies">
+                    <table>
+                        <tr>
+                            <th><button>AZN</button></th>
+                            <th id="selected"><button id="selected">USD</button></th>
+                            <th><button>EUR</button></th>
+                            <th><button>GPD</button></th>
+                        </tr>
+                    </table>
+                    <div class="converter">
+                        <input placeholder="Введите сумму">
+                        <p class="exchange-rates"></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="second">
-            <p>У меня есть</p>
-            <div class="currensies">
-                <table>
-                    <tr>
-                        <th>AZN</th>
-                        <th>USD</th>
-                        <th>EUR</th>
-                        <th>GBP</th>
-                    </tr>
-                </table>
-                <div class="converter">
-                    <input>
-                    <p class="exchange-rates"></p>
-                </div>
-            </div>
-        </div>
-    </body>
+        
+    </main>
+
+</body>
+
 </html>
