@@ -72,7 +72,20 @@ button2.forEach((item, index) => {
         })
     })
     
+let dot = false;
+function removeExtraCharacters(str) {
+    str = str.replace( ',', '.' );   
+    if(str.length == 1 && str[0] == '.') str = str.replace( '.', '' )
+
+    str = str.replace(/[A-Za-zА-Яа-я ]+/g, '');
+    str = str.replace(/[^0-9,.]/g, ' ');
+
+    return str;
+}
+
 input1.addEventListener('keyup', event => {
+    event.target.value = removeExtraCharacters(event.target.value);
+
     if(event.target.value != '') {
         let value;
         value = event.target.value * exchangeRates[0];
@@ -85,6 +98,8 @@ input1.addEventListener('keyup', event => {
 });
 
 input2.addEventListener('keyup', event => {
+    event.target.value = removeExtraCharacters(event.target.value);
+
     if(event.target.value != '') {
         let value = event.target.value * exchangeRates[1];
         if(value % 1 == 0)
