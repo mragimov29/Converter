@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Roboto';
+    margin: 0;
 }
 
 header {
@@ -10,6 +11,8 @@ header {
     justify-content: space-between;
     background: #F5F5F6;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -61,6 +64,7 @@ main {
 
 #selected {
     background: #833AE0;
+    color: white;
 }
 
 button {
@@ -73,13 +77,18 @@ table {
 }
 
 th {
-    border: 1px solid #000;
+    border: 1px solid #C6C6C6;
+}
+
+th button {
+    color: #C6C6C6;
 }
 
 .converter {
     width: 13vw;
-    border: 1px solid #000;
+    border: 1px solid #C6C6C6;
     margin-top: 20px;
+    border-radius: 10px;
 }
 
 input {
@@ -88,4 +97,12 @@ input {
     border: none;
     font-size: 25px;
     margin: 10px 0px 0px 10px;
+}
+
+.converter p{
+    margin-left: 14px;
+}
+
+.blocks p {
+    color: #C6C6C6;
 }
