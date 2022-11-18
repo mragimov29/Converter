@@ -72,7 +72,6 @@ button2.forEach((item, index) => {
         })
     })
     
-let dot = false;
 function removeExtraCharacters(str) {
     str = str.replace( ',', '.' );   
     if(str.length == 1 && str[0] == '.') str = str.replace( '.', '' )
@@ -80,6 +79,13 @@ function removeExtraCharacters(str) {
     str = str.replace(/[A-Za-zА-Яа-я ]+/g, '');
     str = str.replace(/[^0-9,.]/g, ' ');
 
+    let arr = str.split('');
+    let dots = arr.filter(x => x == '.');
+    if(dots.length == 2) {
+        arr.pop();
+        str = arr.join('');
+    }
+    
     return str;
 }
 
