@@ -79,7 +79,7 @@ button {
 
 .table div {
     height: 30px;
-    width: 65px;
+    width: 25%;
     border: 1px solid #C6C6C6;
     display: flex;
     justify-content: center;
@@ -89,11 +89,11 @@ button {
     color: #C6C6C6;
 }
 
-.rounded-1 {
+.rounded-1, .rounded-1 button {
     border-radius: 5px 0px 0px 5px;
 }
 
-.rounded-2 {
+.rounded-2, .rounded-2 button {
     border-radius: 0px 5px 5px 0px;
 }
 
@@ -109,7 +109,7 @@ input {
     width: 70%;
     outline: none;
     border: none;
-    font-size: 25px;
+    font-size: 20px;
     margin: 10px 0px 0px 10px;
 }
 
@@ -120,3 +120,42 @@ input {
 .blocks p {
     color: #C6C6C6;
 }
+
+/* @media (max-width: 1210px) {
+    header {
+        font-size: 10px;
+        height: 38px;
+    }
+
+    .logo {
+        margin: 10px 64px 0px 100px;
+        width: 79px;
+        height: 13px;
+    }
+
+    .sing-in {
+        margin-right: 102px;
+        margin-top: 7px;
+        width: 55px;
+        height: 23px;
+        font-size: 10px;   
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+    
+    .table div {
+        height: 20px;
+        width: 35px;
+    }
+
+    .table div button {
+        font-size: 10px;
+    }
+
+    .first p, .second p {
+        font-size: 10px;
+    }
+
+} */
