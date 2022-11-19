@@ -64,19 +64,20 @@ const prinrWithSpace = (str) => {
     if (c > -1) {
         p = str.slice(0, c);
         b = str.slice(c, str.length);
-        console.log(p, b);
+        return addSpace(p) + b;
     }
-
-    if (p > 3)
-        str = addSpace(p) + b;
-    else if (str.length > 3) str = addSpace(str);
+    // console.log(p, b, c);
+    // if (p.length > 3)
+    //     return addSpace(p) + b;
+    else if (str.length > 3) 
+        str = addSpace(str);
 
     return str;
 }
 
 const addSpace = (str) => {
     let arr = []
-    let x;
+
     for (let i = str.length; i > str.length % 3; i -= 3)
         arr.unshift(str.slice(i - 3, i));
     if (str.length % 3 != 0)
@@ -149,7 +150,6 @@ input2.addEventListener('keyup', event => {
 
         event.target.value = prinrWithSpace(event.target.value);
         input1.value = prinrWithSpace(input1.value);
-
     }
     else input1.value = '';
 });
