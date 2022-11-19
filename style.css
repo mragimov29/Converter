@@ -72,17 +72,31 @@ button {
     border: none;
 }
 
-table {
-    border-collapse:collapse;
+.table {
+    display: flex;
+    flex-direction: row;
 }
 
-th {
+.table div {
+    height: 30px;
+    width: 65px;
     border: 1px solid #C6C6C6;
+    display: flex;
+    justify-content: center;
 }
 
-th button {
+.table div button {
     color: #C6C6C6;
 }
+
+.rounded-1 {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.rounded-2 {
+    border-radius: 0px 5px 5px 0px;
+}
+
 
 .converter {
     width: 13vw;
