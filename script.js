@@ -66,9 +66,7 @@ const prinrWithSpace = (str) => {
         b = str.slice(c, str.length);
         return addSpace(p) + b;
     }
-    // console.log(p, b, c);
-    // if (p.length > 3)
-    //     return addSpace(p) + b;
+    
     else if (str.length > 3) 
         str = addSpace(str);
 
@@ -105,19 +103,36 @@ button1.forEach((item, index) => {
         change(index, button1);
         exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText);
+        getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText,
+            document.querySelector('.second').querySelector('#selected').innerText).
+            then(response => {
+                value = input1.value * response.rates[`${document.querySelector('.second').querySelector('#selected').innerText}`].toFixed(4);
+                if (value % 1 == 0)
+                    input2.value = value;
+                else
+                    input2.value = value.toFixed(4);
+            })
     });
 });
 
 button2.forEach((item, index) => {
     item.addEventListener('click', (event) => {
-        // extraRates[0] = exchangeRates[0];
-        // extraRates[1] = exchangeRates[];
         event.target.id = 'selected';
         event.target.parentElement.id = 'selected';
 
         change(index, button2);
         exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText)
+        
+            getCurrencyData(document.querySelector('.second').querySelector('#selected').innerText,
+            document.querySelector('.first').querySelector('#selected').innerText).
+            then(response => {
+                value = input1.value * response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`].toFixed(4);
+                if (value % 1 == 0)
+                    input2.value = value;
+                else
+                    input2.value = value.toFixed(4);
+            })
     })
 });
 
