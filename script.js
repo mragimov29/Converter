@@ -46,8 +46,7 @@ const removeExtraCharacters = (str) => {
     str = str.replace(',', '.');
     if (str.length == 1 && str[0] == '.') str = str.replace('.', '');
 
-    str = str.replace(/[A-Za-zА-Яа-я ]+/g, '');
-    str = str.replace(/[^0-9,.]/g, ' ');
+    str = str.replace(/[^0-9,.]/g, '');
 
     let arr = str.split('');
     let dots = arr.filter(x => x == '.');
@@ -56,6 +55,33 @@ const removeExtraCharacters = (str) => {
         str = arr.join('');
     }
 
+    return str;
+}
+
+const prinrWithSpace = (str) => {
+    let c = str.indexOf('.');
+    let p = 0, b;
+    if (c > -1) {
+        p = str.slice(0, c);
+        b = str.slice(c, str.length);
+        console.log(p, b);
+    }
+
+    if (p > 3)
+        str = addSpace(p) + b;
+    else if (str.length > 3) str = addSpace(str);
+
+    return str;
+}
+
+const addSpace = (str) => {
+    let arr = []
+    let x;
+    for (let i = str.length; i > str.length % 3; i -= 3)
+        arr.unshift(str.slice(i - 3, i));
+    if (str.length % 3 != 0)
+        arr.unshift(str.slice(0, str.length % 3));
+    str = arr.join(' ');
     return str;
 }
 
@@ -97,12 +123,15 @@ button2.forEach((item, index) => {
 input1.addEventListener('keyup', event => {
     event.target.value = removeExtraCharacters(event.target.value);
     if (event.target.value != '') {
-        let value;
-        value = event.target.value * exchangeRates[0];
+        let value = event.target.value * exchangeRates[0];
+
         if (value % 1 == 0)
             input2.value = value;
         else
             input2.value = value.toFixed(4);
+
+        event.target.value = prinrWithSpace(event.target.value);
+        input2.value = prinrWithSpace(input2.value);
     }
     else input2.value = '';
 });
@@ -117,6 +146,10 @@ input2.addEventListener('keyup', event => {
             input1.value = value;
         else
             input1.value = value.toFixed(4);
+
+        event.target.value = prinrWithSpace(event.target.value);
+        input1.value = prinrWithSpace(input1.value);
+
     }
     else input1.value = '';
 });
