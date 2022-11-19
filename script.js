@@ -106,11 +106,15 @@ button1.forEach((item, index) => {
         getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText).
             then(response => {
-                value = input1.value * response.rates[`${document.querySelector('.second').querySelector('#selected').innerText}`].toFixed(4);
-                if (value % 1 == 0)
-                    input2.value = value;
-                else
-                    input2.value = value.toFixed(4);
+                if (input1.value != '') {
+                    value = removeExtraCharacters(input1.value) * response.rates[`${document.querySelector('.second').querySelector('#selected').innerText}`];
+                    if (value % 1 == 0)
+                        input2.value = value;
+                    else
+                        input2.value = value.toFixed(4);
+                        
+                    input2.value = prinrWithSpace(input2.value);
+                }
             })
     });
 });
@@ -127,12 +131,16 @@ button2.forEach((item, index) => {
             getCurrencyData(document.querySelector('.second').querySelector('#selected').innerText,
             document.querySelector('.first').querySelector('#selected').innerText).
             then(response => {
-                value = input1.value * response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`].toFixed(4);
-                if (value % 1 == 0)
-                    input2.value = value;
-                else
-                    input2.value = value.toFixed(4);
-            })
+                if (input1.value != '') {
+                    value = removeExtraCharacters(input1.value) * response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`].toFixed(4);
+                    if (value % 1 == 0)
+                        input2.value = value;
+                    else
+                        input2.value = value.toFixed(4);
+                    
+                    input2.value = prinrWithSpace(input2.value);
+                }
+            }); 
     })
 });
 
