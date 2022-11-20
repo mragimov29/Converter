@@ -142,7 +142,9 @@ input {
     .blocks {
         width: 550px;
     }
-    
+    .table div {
+        height: 25px;
+    }
     .table div button {
        font-size: 12px;
     }
