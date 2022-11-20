@@ -52,11 +52,11 @@ main {
     margin-top: 56px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 50vw;
 }
 
 .blocks {
-    width: 70%;
+    width: 700px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -97,9 +97,8 @@ button {
     border-radius: 0px 5px 5px 0px;
 }
 
-
 .converter {
-    width: 13vw;
+    width: 100%;
     border: 1px solid #C6C6C6;
     margin-top: 20px;
     border-radius: 10px;
@@ -121,41 +120,42 @@ input {
     color: #C6C6C6;
 }
 
-/* @media (max-width: 1210px) {
-    header {
-        font-size: 10px;
-        height: 38px;
-    }
-
+@media screen and (max-width: 1185px) {
     .logo {
         margin: 10px 64px 0px 100px;
-        width: 79px;
+        width: 69px;
         height: 13px;
     }
-
-    .sing-in {
-        margin-right: 102px;
-        margin-top: 7px;
-        width: 55px;
-        height: 23px;
-        font-size: 10px;   
-    }
-
-    h1 {
-        font-size: 26px;
+    
+    .list {
+        font-size: 11px;
     }
     
-    .table div {
-        height: 20px;
-        width: 35px;
+    h1 {
+        font-size: 25px;
     }
-
+    
+    main {
+        font-size: 13px;
+    }
+    
+    .blocks {
+        width: 550px;
+    }
+    
     .table div button {
-        font-size: 10px;
+       font-size: 12px;
     }
-
-    .first p, .second p {
-        font-size: 10px;
+    
+    input {
+        font-size: 15px;
     }
-
-} */
+    
+    .converter p{
+        font-size: 12px;
+    }
+    
+    .blocks p {
+        color: #C6C6C6;
+    }
+}

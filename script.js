@@ -12,13 +12,17 @@ const printAndGetCurrency = (firstCurrency, secondCurrency) => {
             let p = document.querySelector('.first').querySelector('.exchange-rates');
             p.innerText = `1 ${firstCurrency} = ${response.rates[`${secondCurrency}`].toFixed(4)} ${secondCurrency}`;
             exchangeRates.push(response.rates[`${secondCurrency}`].toFixed(4));
-        })
+        }).catch(error => {
+            alert(error);
+        });
     getCurrencyData(secondCurrency, firstCurrency).
         then(response => {
             let p = document.querySelector('.second').querySelector('.exchange-rates');
             p.innerText = `1 ${secondCurrency} = ${response.rates[`${firstCurrency}`].toFixed(4)} ${firstCurrency}`;
             exchangeRates.push(response.rates[`${firstCurrency}`].toFixed(4));
-        })
+        }).catch(error => {
+            alert(error);
+        });
     return exchangeRates;
 }
 
@@ -115,7 +119,9 @@ button1.forEach((item, index) => {
                         
                     input2.value = prinrWithSpace(input2.value);
                 }
-            })
+            }).catch(error => {
+                alert(error);
+            });
     });
 });
 
@@ -128,11 +134,11 @@ button2.forEach((item, index) => {
         exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText)
         
-            getCurrencyData(document.querySelector('.second').querySelector('#selected').innerText,
-            document.querySelector('.first').querySelector('#selected').innerText).
-            then(response => {
+            getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText, 
+            document.querySelector('.second').querySelector('#selected').innerText)
+            .then(response => {
                 if (input1.value != '') {
-                    value = removeExtraCharacters(input1.value) * response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`].toFixed(4);
+                    value = removeExtraCharacters(input1.value) * response.rates[`${document.querySelector('.second').querySelector('#selected').innerText}`].toFixed(4);
                     if (value % 1 == 0)
                         input2.value = value;
                     else
@@ -140,6 +146,8 @@ button2.forEach((item, index) => {
                     
                     input2.value = prinrWithSpace(input2.value);
                 }
+            }).catch(error => {
+                alert(error);
             }); 
     })
 });
