@@ -167,30 +167,22 @@ button2.forEach((item, index) => {
     })
 });
 
-input1.addEventListener('keyup', event => {
-    e = event || window.event;
-    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
-        event.target.value = removeExtraCharacters(event.target.value);
-        if (event.target.value != '') {
-            let value = event.target.value * exchangeRates[0];
+input1.addEventListener('keyup', evt => {
+    evt.preventDefault()
+    evt.target.value = '2.0'
+    // if(evt.key == ',' || evt.key == '.')
 
-            if (value % 1 == 0)
-                input2.value = value;
-            else
-                input2.value = value.toFixed(4);
-
-            event.target.value = prinrWithSpace(event.target.value);
-            input2.value = prinrWithSpace(input2.value);
-        }
-        else input2.value = '';
-    }
+    // console.log('bbbbbb', evt.target.value.replace(',', '.'))
+    // // evt.target.value = evt.target.value.replace(',', '.');
+    // console.log('ccccc', evt.target.value)
 });
 
 input2.addEventListener('keyup', event => {
     event.target.value = removeExtraCharacters(event.target.value);
     e = event || window.event;
-    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
-        if (event.target.value != '') {
+    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39'
+    && e.keyCode != '8' && e.keyCode != '9' && e.keyCode != '13' && e.keyCode != '16' && e.keyCode != '17' && e.keyCode != '20') {
+       if (event.target.value != '') {
             let value = event.target.value * exchangeRates[1];
             if (value % 1 == 0)
                 input1.value = value;
