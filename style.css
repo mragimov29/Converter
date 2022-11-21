@@ -18,7 +18,9 @@ header {
 .menu {
     display: none;
 }
-
+.head {
+    width: 20%;
+}
 .logo {
     margin: 15px 0px 0px 100px;
     width: 89px;
@@ -29,7 +31,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1000px;
+    width: 80%;
     margin-right: 109px;
 }
 
