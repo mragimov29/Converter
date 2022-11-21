@@ -55,13 +55,13 @@ const removeExtraCharacters = (str) => {
     let arr = str.split('');
     let dots = arr.filter(x => x == '.');
     let dot = 0;
-    let removed;
+
     if (dots.length == 2) {
         arr.forEach((item, index) => {
-            if(dot == 1 && item == '.') {
+            if (dot == 1 && item == '.') {
                 arr.splice(index, 1);
             }
-            if(item == '.') dot++;
+            if (item == '.') dot++;
         })
         str = arr.join('');
     }
@@ -92,6 +92,19 @@ const addSpace = (str) => {
         arr.unshift(str.slice(0, str.length % 3));
     str = arr.join(' ');
     return str;
+}
+
+const getCursorPos = (input) => {
+    let caretPos = 0;
+    if (document.selection) {
+        input.focus();
+        let sel = document.selection.createRange();
+        sel.moveStart('character', -input.value.length);
+        caretPos = sel.text.length;
+    } else if (input.selectionStart || input.selectionStart == '0') {
+        caretPos = input.selectionStart;
+    }
+    return caretPos
 }
 
 //variables
@@ -173,19 +186,14 @@ button2.forEach((item, index) => {
     })
 });
 
-let prevKey;
+let prevSpace1 = 0;
 input1.addEventListener('keyup', event => {
-    // evt.preventDefault()
-    // evt.target.value = '2.0'
-    // if(evt.key == ',' || evt.key == '.')
+    e = event || window.event;
 
-    // prevKey = evt.key;
-    // event.target.value = removeExtraCharacters(event.target.value);
+    let caretPos = getCursorPos(input1);
 
-    e = event || window.event;  
-    // var val = event.value;
-    // alert(val.slice(0, event.selectionStart).length);
-    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
+    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39'
+        && e.keyCode != '9' && e.keyCode != '13' && e.keyCode != '16' && e.keyCode != '17' && e.keyCode != '20') {
         event.target.value = removeExtraCharacters(event.target.value);
         if (event.target.value != '') {
             let value = event.target.value * exchangeRates[0];
@@ -197,17 +205,32 @@ input1.addEventListener('keyup', event => {
 
             event.target.value = prinrWithSpace(event.target.value);
             input2.value = prinrWithSpace(input2.value);
+            
+            let space = event.target.value.split('').filter(x => x == ' ');
+
+            if (space.length > prevSpace1.length)
+                input1.setSelectionRange(caretPos + 1, caretPos + 1)
+            else if (!(e.keyCode > 47 && e.keyCode < 57))
+                input1.setSelectionRange(caretPos - 1, caretPos - 1)
+            else
+                input1.setSelectionRange(caretPos, caretPos)
+
+            prevSpace1 = event.target.value.split('').filter(x => x == ' ');
         }
         else input2.value = '';
     }
 });
 
+let prevSpace2 = 0;
 input2.addEventListener('keyup', event => {
-    event.target.value = removeExtraCharacters(event.target.value);
     e = event || window.event;
+
+    let caretPos = getCursorPos(input2);
+
     if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39'
-    && e.keyCode != '8' && e.keyCode != '9' && e.keyCode != '13' && e.keyCode != '16' && e.keyCode != '17' && e.keyCode != '20') {
-       if (event.target.value != '') {
+        && e.keyCode != '8' && e.keyCode != '9' && e.keyCode != '13' && e.keyCode != '16' && e.keyCode != '17' && e.keyCode != '20') {
+        if (event.target.value != '') {
+            event.target.value = removeExtraCharacters(event.target.value);
             let value = event.target.value * exchangeRates[1];
             if (value % 1 == 0)
                 input1.value = value;
@@ -216,6 +239,17 @@ input2.addEventListener('keyup', event => {
 
             event.target.value = prinrWithSpace(event.target.value);
             input1.value = prinrWithSpace(input1.value);
+
+            let space = event.target.value.split('').filter(x => x == ' ');
+
+            if (space.length > prevSpace2.length)
+                input2.setSelectionRange(caretPos + 1, caretPos + 1)
+            else if (!(e.keyCode > 47 && e.keyCode < 57))
+                input2.setSelectionRange(caretPos - 1, caretPos - 1)
+            else
+                input2.setSelectionRange(caretPos, caretPos)
+
+            prevSpace2 = event.target.value.split('').filter(x => x == ' ');
         }
         else input1.value = '';
     }
