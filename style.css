@@ -15,6 +15,10 @@ header {
     padding: 0;
 }
 
+.menu {
+    display: none;
+}
+
 .logo {
     margin: 15px 64px 0px 100px;
     width: 89px;
@@ -120,7 +124,7 @@ input {
     color: #C6C6C6;
 }
 
-@media screen and (max-width: 1185px) {
+@media  (max-width: 1185px) {
     .logo {
         margin: 10px 64px 0px 100px;
         width: 69px;
@@ -131,6 +135,13 @@ input {
         font-size: 11px;
     }
     
+
+    .sing-in {
+        font-size: 11px;
+        margin-top: 6px;
+        height: 23px;
+    }
+
     h1 {
         font-size: 25px;
     }
@@ -159,5 +170,34 @@ input {
     
     .blocks p {
         color: #C6C6C6;
+    }
+}
+
+@media  (max-width: 700px) { 
+    .logo {
+        width: 89px;
+        height: 23px;
+        margin-bottom: 10px   
+    }
+    
+    .list {
+        display: none;
+    }
+
+    .sing-in {
+        display: none;
+    }
+    
+    .menu {
+        display: block;
+
+        width: 30px;
+        height: 30px;
+        margin: 7px 45px 0px 0px;
+    }
+
+    .blocks {
+        width: 50vw;
+        flex-direction: column;
     }
 }
