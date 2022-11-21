@@ -95,10 +95,23 @@ const currency1 = document.querySelector('.first').querySelector('#selected');
 const currency2 = document.querySelector('.second').querySelector('#selected');
 const button1 = document.querySelector('.first').querySelectorAll('button');
 const button2 = document.querySelector('.second').querySelectorAll('button');
+const menuButton = document.querySelector('.menu')
 let exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
     document.querySelector('.second').querySelector('#selected').innerText);
 
 //events
+menuButton.addEventListener('click', (event) => {
+    if(event.target.id == 'clicked') {
+        document.querySelector('.list').style.display = 'none';
+        document.querySelector('.sing-in').style.display = 'none';
+        event.target.id = ''
+    } else {
+        event.target.id = 'clicked'
+        document.querySelector('.list').style.display = 'flex';
+        document.querySelector('.sing-in').style.display = 'flex';
+    }
+});
+
 button1.forEach((item, index) => {
     item.addEventListener('click', (event) => {
         event.target.id = 'selected';

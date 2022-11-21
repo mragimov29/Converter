@@ -10,7 +10,10 @@
 
 <body>
     <header>
-        <img src="./images/logo.svg" alt="logo" class="logo">
+        <div class="head">
+            <img src="./images/logo.svg" alt="logo" class="logo">
+            <img src="images/menu.png" class="menu" alt="menu">
+        </div>
         <div class="list">
             <p>БАНК</p>
             <p>БИЗНЕС</p>
@@ -19,11 +22,10 @@
             <p>МОБАЙЛ</p>
             <p>ПУТЕШЕСТВИЯ</p>
             <p>РАЗВЛЕЧЕНИЯ</p>
+            <button class="sing-in">
+                <span>ВОЙТИ</span>
+            </button>
         </div>
-        <button class="sing-in">
-            <span>ВОЙТИ</span>
-        </button>
-        <img src="images/menu.png" class="menu" alt="menu">
     </header>
     <main>
         <h1>Конвертер валют онлайн</h1>
@@ -47,10 +49,10 @@
                 <p>У меня есть</p>
                 <div class="currensies">
                     <div class="table">
-                            <div class="rounded-1"><button>AZN</button></div>
-                            <div id="selected"><button id="selected">USD</button></div>
-                            <div><button>EUR</button></div>
-                            <div class="rounded-2"><button>GBP</button></div>
+                        <div class="rounded-1"><button>AZN</button></div>
+                        <div id="selected"><button id="selected">USD</button></div>
+                        <div><button>EUR</button></div>
+                        <div class="rounded-2"><button>GBP</button></div>
                     </div>
                     <div class="converter">
                         <input placeholder="Введите сумму">
