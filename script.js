@@ -202,7 +202,7 @@ input1.addEventListener('keyup', event => {
                 input2.value = value;
             else
                 input2.value = value.toFixed(4);
-
+            event.target.value = event.target.value.substr(0, 14);
             event.target.value = prinrWithSpace(event.target.value);
             input2.value = prinrWithSpace(input2.value);
             
