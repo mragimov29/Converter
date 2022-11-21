@@ -47,6 +47,9 @@ const change = (index, button) => {
 }
 
 const removeExtraCharacters = (str) => {
+    if(str[0] == '0')  
+        str = str.slice(1);
+
     str = str.replace(',', '.');
     if (str.length == 1 && str[0] == '.') str = str.replace('.', '');
 
