@@ -70,8 +70,8 @@ const prinrWithSpace = (str) => {
         b = str.slice(c, str.length);
         return addSpace(p) + b;
     }
-    
-    else if (str.length > 3) 
+
+    else if (str.length > 3)
         str = addSpace(str);
 
     return str;
@@ -95,20 +95,22 @@ const currency1 = document.querySelector('.first').querySelector('#selected');
 const currency2 = document.querySelector('.second').querySelector('#selected');
 const button1 = document.querySelector('.first').querySelectorAll('button');
 const button2 = document.querySelector('.second').querySelectorAll('button');
-const menuButton = document.querySelector('.menu')
+const menuButton = document.querySelector('.menu');
 let exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
     document.querySelector('.second').querySelector('#selected').innerText);
 
 //events
 menuButton.addEventListener('click', (event) => {
-    if(event.target.id == 'clicked') {
-        document.querySelector('.list').style.display = 'none';
-        document.querySelector('.sing-in').style.display = 'none';
-        event.target.id = ''
-    } else {
-        event.target.id = 'clicked'
-        document.querySelector('.list').style.display = 'flex';
-        document.querySelector('.sing-in').style.display = 'flex';
+    if (window.innerWidth < 801) {
+        if (event.target.id == 'clicked') {
+            document.querySelector('.list').style.display = 'none';
+            document.querySelector('.sing-in').style.display = 'none';
+            event.target.id = ''
+        } else {
+            event.target.id = 'clicked'
+            document.querySelector('.list').style.display = 'flex';
+            document.querySelector('.sing-in').style.display = 'flex';
+        }
     }
 });
 
@@ -129,7 +131,7 @@ button1.forEach((item, index) => {
                         input2.value = value;
                     else
                         input2.value = value.toFixed(4);
-                        
+
                     input2.value = prinrWithSpace(input2.value);
                 }
             }).catch(error => {
@@ -146,8 +148,8 @@ button2.forEach((item, index) => {
         change(index, button2);
         exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText)
-        
-            getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText, 
+
+        getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText)
             .then(response => {
                 if (input1.value != '') {
@@ -156,44 +158,48 @@ button2.forEach((item, index) => {
                         input2.value = value;
                     else
                         input2.value = value.toFixed(4);
-                    
+
                     input2.value = prinrWithSpace(input2.value);
                 }
             }).catch(error => {
                 alert(error);
-            }); 
+            });
     })
 });
 
 input1.addEventListener('keyup', event => {
-    event.target.value = removeExtraCharacters(event.target.value);
-    if (event.target.value != '') {
-        let value = event.target.value * exchangeRates[0];
+    e = event || window.event;
+    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
+        event.target.value = removeExtraCharacters(event.target.value);
+        if (event.target.value != '') {
+            let value = event.target.value * exchangeRates[0];
 
-        if (value % 1 == 0)
-            input2.value = value;
-        else
-            input2.value = value.toFixed(4);
+            if (value % 1 == 0)
+                input2.value = value;
+            else
+                input2.value = value.toFixed(4);
 
-        event.target.value = prinrWithSpace(event.target.value);
-        input2.value = prinrWithSpace(input2.value);
+            event.target.value = prinrWithSpace(event.target.value);
+            input2.value = prinrWithSpace(input2.value);
+        }
+        else input2.value = '';
     }
-    else input2.value = '';
 });
 
 input2.addEventListener('keyup', event => {
-    console.log(exchangeRates)
     event.target.value = removeExtraCharacters(event.target.value);
+    e = event || window.event;
+    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
+        if (event.target.value != '') {
+            let value = event.target.value * exchangeRates[1];
+            if (value % 1 == 0)
+                input1.value = value;
+            else
+                input1.value = value.toFixed(4);
 
-    if (event.target.value != '') {
-        let value = event.target.value * exchangeRates[1];
-        if (value % 1 == 0)
-            input1.value = value;
-        else
-            input1.value = value.toFixed(4);
-
-        event.target.value = prinrWithSpace(event.target.value);
-        input1.value = prinrWithSpace(input1.value);
+            event.target.value = prinrWithSpace(event.target.value);
+            input1.value = prinrWithSpace(input1.value);
+        }
+        else input1.value = '';
     }
-    else input1.value = '';
 });
