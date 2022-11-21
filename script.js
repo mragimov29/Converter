@@ -54,11 +54,17 @@ const removeExtraCharacters = (str) => {
 
     let arr = str.split('');
     let dots = arr.filter(x => x == '.');
+    let dot = 0;
+    let removed;
     if (dots.length == 2) {
-        arr.pop();
+        arr.forEach((item, index) => {
+            if(dot == 1 && item == '.') {
+                arr.splice(index, 1);
+            }
+            if(item == '.') dot++;
+        })
         str = arr.join('');
     }
-
     return str;
 }
 
@@ -99,7 +105,7 @@ const menuButton = document.querySelector('.menu');
 let exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
     document.querySelector('.second').querySelector('#selected').innerText);
 
-//events
+// //events
 menuButton.addEventListener('click', (event) => {
     if (window.innerWidth < 801) {
         if (event.target.id == 'clicked') {
@@ -167,14 +173,33 @@ button2.forEach((item, index) => {
     })
 });
 
-input1.addEventListener('keyup', evt => {
-    evt.preventDefault()
-    evt.target.value = '2.0'
+let prevKey;
+input1.addEventListener('keyup', event => {
+    // evt.preventDefault()
+    // evt.target.value = '2.0'
     // if(evt.key == ',' || evt.key == '.')
 
-    // console.log('bbbbbb', evt.target.value.replace(',', '.'))
-    // // evt.target.value = evt.target.value.replace(',', '.');
-    // console.log('ccccc', evt.target.value)
+    // prevKey = evt.key;
+    // event.target.value = removeExtraCharacters(event.target.value);
+
+    e = event || window.event;  
+    // var val = event.value;
+    // alert(val.slice(0, event.selectionStart).length);
+    if (e.keyCode != '38' && e.keyCode != '40' && e.keyCode != '37' && e.keyCode != '39') {
+        event.target.value = removeExtraCharacters(event.target.value);
+        if (event.target.value != '') {
+            let value = event.target.value * exchangeRates[0];
+
+            if (value % 1 == 0)
+                input2.value = value;
+            else
+                input2.value = value.toFixed(4);
+
+            event.target.value = prinrWithSpace(event.target.value);
+            input2.value = prinrWithSpace(input2.value);
+        }
+        else input2.value = '';
+    }
 });
 
 input2.addEventListener('keyup', event => {
