@@ -135,6 +135,10 @@ menuButton.addEventListener('click', (event) => {
             document.querySelector('.list').style.display = 'flex';
             document.querySelector('.sing-in').style.display = 'flex';
         }
+    } else {
+        event.target.id = 'clicked'
+        document.querySelector('.list').style.display = 'flex';
+        document.querySelector('.sing-in').style.display = 'flex';
     }
 });
 
