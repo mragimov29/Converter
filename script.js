@@ -49,7 +49,7 @@ const change = (index, button) => {
 const removeExtraCharacters = (str) => {
     str = str.replace(',', '.').replace(/^00+/, '0');
 
-    if(str[0] == '0' && str.length > 1)  
+    if(str[0] == '0' && str.length > 1 && str[1] != '.')  
         str = str.slice(1);
 
     str = str.replace(',', '.');
