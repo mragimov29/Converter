@@ -107,6 +107,7 @@ button {
 
 .converter {
     width: 100%;
+    height: 90px;
     border: 1px solid #C6C6C6;
     margin-top: 20px;
     border-radius: 10px;
@@ -122,6 +123,7 @@ input {
 
 .converter p{
     margin-left: 14px;
+    margin-top: 25px;
 }
 
 .blocks p {
@@ -129,6 +131,10 @@ input {
 }
 
 @media  (max-width: 1185px) {
+    .converter {
+        height: 80px;
+    }
+
     .logo {
         margin: 10px 64px 0px 40%;
         width: 69px;
@@ -137,10 +143,12 @@ input {
     
     .list {
         font-size: 11px;
+        display: flex;
     }
     
 
     .sing-in {
+        display: flex;
         font-size: 11px;
         margin-top: 6px;
         height: 23px;
@@ -203,6 +211,10 @@ input {
         display: none;
     }
     
+    .converter {
+        height: 80px;
+    }
+
     .menu {
         display: block;
         width: 30px;

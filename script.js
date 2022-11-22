@@ -135,10 +135,10 @@ menuButton.addEventListener('click', (event) => {
             document.querySelector('.list').style.display = 'flex';
             document.querySelector('.sing-in').style.display = 'flex';
         }
-    } else {
+    } 
+    if (window.innerWidth >= 801){
         event.target.id = 'clicked'
         document.querySelector('.list').style.display = 'flex';
-        document.querySelector('.sing-in').style.display = 'flex';
     }
 });
 
@@ -223,8 +223,11 @@ input1.addEventListener('keyup', event => {
                 input1.setSelectionRange(caretPos, caretPos)
             else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input1.setSelectionRange(caretPos - 1, caretPos - 1)
-            else if (space.length > prevSpace1.length)
+            if (space.length > prevSpace1.length)
                 input1.setSelectionRange(caretPos + 1, caretPos + 1)
+            else if(space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188)) 
+                input1.setSelectionRange(caretPos - 1, caretPos - 1)
+
 
             prevSpace1 = event.target.value.split('').filter(x => x == ' ');
         }
@@ -257,8 +260,10 @@ input2.addEventListener('keyup', event => {
                 input2.setSelectionRange(caretPos, caretPos)
             else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input2.setSelectionRange(caretPos - 1, caretPos - 1)
-            else if (space.length > prevSpace1.length)
+            if (space.length > prevSpace1.length)
                 input2.setSelectionRange(caretPos + 1, caretPos + 1)
+            else if(space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188)) 
+                input2.setSelectionRange(caretPos - 1, caretPos - 1)
 
             prevSpace2 = event.target.value.split('').filter(x => x == ' ');
         }
