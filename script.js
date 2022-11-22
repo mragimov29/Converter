@@ -49,7 +49,7 @@ const change = (index, button) => {
 const removeExtraCharacters = (str) => {
     str = str.replace(',', '.').replace(/^00+/, '0');
 
-    if(str[0] == '0' && str.length > 1 && str[1] != '.')  
+    if (str[0] == '0' && str.length > 1 && str[1] != '.')
         str = str.slice(1);
 
     str = str.replace(',', '.');
@@ -123,6 +123,17 @@ const menuButton = document.querySelector('.menu');
 let exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
     document.querySelector('.second').querySelector('#selected').innerText);
 
+
+window.addEventListener('resize', (e) => {
+    if (window.innerWidth >= 801) {
+        document.querySelector('.list').style.display = 'flex';
+        document.querySelector('.sing-in').style.display = 'flex';
+    }
+    else {
+        document.querySelector('.list').style.display = 'none';
+        document.querySelector('.sing-in').style.display = 'none';
+    }
+});
 // //events
 menuButton.addEventListener('click', (event) => {
     if (window.innerWidth < 801) {
@@ -135,10 +146,6 @@ menuButton.addEventListener('click', (event) => {
             document.querySelector('.list').style.display = 'flex';
             document.querySelector('.sing-in').style.display = 'flex';
         }
-    } 
-    if (window.innerWidth >= 801){
-        event.target.id = 'clicked'
-        document.querySelector('.list').style.display = 'flex';
     }
 });
 
@@ -216,16 +223,16 @@ input1.addEventListener('keyup', event => {
             event.target.value = event.target.value.substr(0, 14);
             event.target.value = prinrWithSpace(event.target.value);
             input2.value = prinrWithSpace(input2.value);
-            
+
             let space = event.target.value.split('').filter(x => x == ' ');
-            
-            if(e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
+
+            if (e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
                 input1.setSelectionRange(caretPos, caretPos)
             else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input1.setSelectionRange(caretPos - 1, caretPos - 1)
             if (space.length > prevSpace1.length)
                 input1.setSelectionRange(caretPos + 1, caretPos + 1)
-            else if(space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188)) 
+            else if (space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188))
                 input1.setSelectionRange(caretPos - 1, caretPos - 1)
 
 
@@ -256,13 +263,13 @@ input2.addEventListener('keyup', event => {
 
             let space = event.target.value.split('').filter(x => x == ' ');
 
-            if(e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
+            if (e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
                 input2.setSelectionRange(caretPos, caretPos)
             else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input2.setSelectionRange(caretPos - 1, caretPos - 1)
             if (space.length > prevSpace1.length)
                 input2.setSelectionRange(caretPos + 1, caretPos + 1)
-            else if(space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188)) 
+            else if (space.length < prevSpace1.length && (e.keyCode == 190 || e.keyCode == 188))
                 input2.setSelectionRange(caretPos - 1, caretPos - 1)
 
             prevSpace2 = event.target.value.split('').filter(x => x == ' ');
