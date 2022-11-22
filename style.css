@@ -76,6 +76,7 @@ main {
 button {
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 .table {
