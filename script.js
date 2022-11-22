@@ -213,7 +213,7 @@ input1.addEventListener('keyup', event => {
             
             if(e.keyCode == 8 || e.keyCode == 190 || e.keyCode == 188)
                 input1.setSelectionRange(caretPos, caretPos)
-            else if (!(e.keyCode > 47 && e.keyCode < 57))
+            else if (!(e.keyCode > 47 && e.keyCode < 58))
                 input1.setSelectionRange(caretPos - 1, caretPos - 1)
             else if (space.length > prevSpace1.length)
                 input1.setSelectionRange(caretPos + 1, caretPos + 1)
@@ -245,12 +245,12 @@ input2.addEventListener('keyup', event => {
 
             let space = event.target.value.split('').filter(x => x == ' ');
 
-            if (space.length > prevSpace2.length)
-                input2.setSelectionRange(caretPos + 1, caretPos + 1)
-            else if (!(e.keyCode > 47 && e.keyCode < 57))
-                input2.setSelectionRange(caretPos - 1, caretPos - 1)
-            else
+            if(e.keyCode == 8 || e.keyCode == 190 || e.keyCode == 188)
                 input2.setSelectionRange(caretPos, caretPos)
+            else if (!(e.keyCode > 47 && e.keyCode < 58))
+                input2.setSelectionRange(caretPos - 1, caretPos - 1)
+            else if (space.length > prevSpace1.length)
+                input2.setSelectionRange(caretPos + 1, caretPos + 1)
 
             prevSpace2 = event.target.value.split('').filter(x => x == ' ');
         }
