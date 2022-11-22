@@ -150,17 +150,19 @@ button1.forEach((item, index) => {
         change(index, button1);
         exchangeRates = printAndGetCurrency(document.querySelector('.first').querySelector('#selected').innerText,
             document.querySelector('.second').querySelector('#selected').innerText);
-        getCurrencyData(document.querySelector('.first').querySelector('#selected').innerText,
-            document.querySelector('.second').querySelector('#selected').innerText).
+
+        getCurrencyData(document.querySelector('.second').querySelector('#selected').innerText,
+            document.querySelector('.first').querySelector('#selected').innerText).
             then(response => {
                 if (input1.value != '') {
-                    value = removeExtraCharacters(input1.value) * response.rates[`${document.querySelector('.second').querySelector('#selected').innerText}`];
+                    console.log(response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`]);
+                    value = removeExtraCharacters(input2.value) * response.rates[`${document.querySelector('.first').querySelector('#selected').innerText}`];
                     if (value % 1 == 0)
-                        input2.value = value;
+                        input1.value = value;
                     else
-                        input2.value = value.toFixed(4);
+                        input1.value = value.toFixed(4);
 
-                    input2.value = prinrWithSpace(input2.value);
+                    input1.value = prinrWithSpace(input1.value);
                 }
             }).catch(error => {
                 alert(error);
