@@ -47,7 +47,9 @@ const change = (index, button) => {
 }
 
 const removeExtraCharacters = (str) => {
-    if(str[0] == '0')  
+    str = str.replace(',', '.').replace(/^00+/, '0');
+
+    if(str[0] == '0' && str.length > 1)  
         str = str.slice(1);
 
     str = str.replace(',', '.');
@@ -211,9 +213,9 @@ input1.addEventListener('keyup', event => {
             
             let space = event.target.value.split('').filter(x => x == ' ');
             
-            if(e.keyCode == 8 || e.keyCode == 190 || e.keyCode == 188)
+            if(e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
                 input1.setSelectionRange(caretPos, caretPos)
-            else if (!(e.keyCode > 47 && e.keyCode < 58))
+            else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input1.setSelectionRange(caretPos - 1, caretPos - 1)
             else if (space.length > prevSpace1.length)
                 input1.setSelectionRange(caretPos + 1, caretPos + 1)
@@ -245,9 +247,9 @@ input2.addEventListener('keyup', event => {
 
             let space = event.target.value.split('').filter(x => x == ' ');
 
-            if(e.keyCode == 8 || e.keyCode == 190 || e.keyCode == 188)
+            if(e.keyCode == 8 || (event.target.value[event.target.value.length - 1] = '.'))
                 input2.setSelectionRange(caretPos, caretPos)
-            else if (!(e.keyCode > 47 && e.keyCode < 58))
+            else if (!(e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 190 || e.keyCode == 188)
                 input2.setSelectionRange(caretPos - 1, caretPos - 1)
             else if (space.length > prevSpace1.length)
                 input2.setSelectionRange(caretPos + 1, caretPos + 1)
